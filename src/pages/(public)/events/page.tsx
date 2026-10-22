@@ -240,9 +240,8 @@ export default function EventsPage() {
                                         key={f.value}
                                         type="button"
                                         onClick={() => setModeFilter(f.value)}
-                                        className={`rounded-md px-3.5 py-1.5 text-sm font-bold transition focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-joy-grass/60 ${
-                                            modeFilter === f.value ? "bg-white text-joy-ink shadow-sm" : "text-joy-ink-muted"
-                                        }`}
+                                        className={`rounded-md px-3.5 py-1.5 text-sm font-bold transition focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-joy-grass/60 ${modeFilter === f.value ? "bg-white text-joy-ink shadow-sm" : "text-joy-ink-muted"
+                                            }`}
                                     >
                                         {f.label}
                                     </button>
@@ -260,11 +259,10 @@ export default function EventsPage() {
                                             setCityFilter(null);
                                             setCategoryFilter(categoryFilter === c.name ? null : c.name);
                                         }}
-                                        className={`rounded-full border px-3 py-1 text-xs font-bold transition focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-joy-grass/60 ${
-                                            categoryFilter === c.name
+                                        className={`rounded-full border px-3 py-1 text-xs font-bold transition focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-joy-grass/60 ${categoryFilter === c.name
                                                 ? "border-joy-grass/40 bg-joy-grass/10 text-joy-grass"
                                                 : "border-joy-ink/10 text-joy-ink-muted hover:border-joy-ink/25"
-                                        }`}
+                                            }`}
                                     >
                                         {c.name}
                                         <span className="joy-mono ml-1 opacity-60">{c.count}</span>
@@ -287,11 +285,10 @@ export default function EventsPage() {
                                             setCategoryFilter(null);
                                             setCityFilter(cityFilter === c.name ? null : c.name);
                                         }}
-                                        className={`rounded-full border px-3 py-1 text-xs font-bold transition focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-joy-grass/60 ${
-                                            cityFilter === c.name
+                                        className={`rounded-full border px-3 py-1 text-xs font-bold transition focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-joy-grass/60 ${cityFilter === c.name
                                                 ? "border-joy-sky/50 bg-joy-sky/12 text-joy-sky-ink"
                                                 : "border-joy-ink/10 text-joy-ink-muted hover:border-joy-ink/25"
-                                        }`}
+                                            }`}
                                     >
                                         {c.name}
                                         <span className="joy-mono ml-1 opacity-60">{c.count}</span>
@@ -361,17 +358,21 @@ export default function EventsPage() {
                                             key={item.dateStr}
                                             type="button"
                                             onClick={() => setSelectedDate(isSelected ? null : item.dateStr)}
-                                            className={`relative flex h-9 w-full flex-col items-center justify-center rounded-lg text-xs font-bold transition focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-joy-grass/60 ${
-                                                isSelected
+                                            aria-label={`${item.dateStr}${hasEvent ? ", events available" : ""}`}
+                                            aria-pressed={isSelected}
+                                            className={`relative flex h-9 w-full flex-col items-center justify-center rounded-lg text-xs font-bold transition focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-joy-grass/60 ${isSelected
                                                     ? "bg-joy-grass text-white shadow-sm"
                                                     : hasEvent
-                                                    ? "bg-joy-grass/10 text-joy-grass hover:bg-joy-grass/20"
-                                                    : "text-joy-ink hover:bg-joy-ink/5"
-                                            }`}
+                                                        ? "bg-joy-grass/10 text-joy-grass hover:bg-joy-grass/20"
+                                                        : "text-joy-ink hover:bg-joy-ink/5"
+                                                }`}
                                         >
                                             <span>{item.dayNum}</span>
                                             {hasEvent && !isSelected && (
-                                                <span className="absolute bottom-1 h-1 w-1 rounded-full bg-joy-grass" />
+                                                <span
+                                                    className="absolute bottom-1 h-1 w-1 rounded-full bg-joy-grass"
+                                                    aria-hidden="true"
+                                                />
                                             )}
                                         </button>
                                     );
